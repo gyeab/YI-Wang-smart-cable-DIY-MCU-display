@@ -1,0 +1,67 @@
+﻿<Window x:Class="WingForce.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WingForce"
+        mc:Ignorable="d"
+        Title="WINGFORCE - V0.2" Height="598" Width="800" MinWidth="800" MinHeight="600" MaxWidth="1200" MaxHeight="1000" Background="Black" Closing="OnWindowClosing">
+    <Grid>
+        <Border x:Name="WriteConfigButton" BorderThickness="1" HorizontalAlignment="Right" Width="356" Background="#FF232323"/>
+
+        <Button x:Name="ConnectionButton" Content="Connect Device" HorizontalAlignment="Left" Margin="22,25,0,0" VerticalAlignment="Top" Height="38" Width="156" Click="ConnectionButton_Click" FontSize="18" Background="#FF76B900"/>
+        <ComboBox x:Name="PortSelectBox" HorizontalAlignment="Left" Margin="188,29,0,0" VerticalAlignment="Top" Width="102" Height="28" FontSize="14"/>
+        <Button x:Name="RefreshPortsButton" Content="Refresh Ports" HorizontalAlignment="Left" Margin="300,25,0,0" VerticalAlignment="Top" Width="104" Height="38" FontSize="14" Click="RefreshPortsButton_Click"/>
+        <ListView x:Name="ChannelDataListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,155,374,10" SelectionChanged="ListView_SelectionChanged" FontSize="14">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Channel" DisplayMemberBinding="{Binding ChannelName}" Width="120"/>
+                    <GridViewColumn Header="Voltage (V)" DisplayMemberBinding="{Binding voltage}" Width="120"/>
+                    <GridViewColumn Header="Current (A)" DisplayMemberBinding="{Binding current}" Width="120"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ReadConfigButton" Content="Read Config" HorizontalAlignment="Right" Margin="0,0,234,21" VerticalAlignment="Bottom" Click="ReadConfigButton_Click" FontSize="14" Width="92" Height="22"/>
+        <Button x:Name="WriteThemeButton" Content="Write Display Theme" HorizontalAlignment="Right" Margin="0,0,130,21" VerticalAlignment="Bottom" Click="WriteThemeButton_Click" FontSize="14" Width="98" Height="22"/>
+        <Button x:Name="WriteConfigButton1" Content="Write Config" HorizontalAlignment="Right" Margin="0,0,25,21" VerticalAlignment="Bottom" Click="WriteConfigButton1_Click" FontSize="14" Width="98" Height="22"/>
+        <Button x:Name="WarningTestButton" Content="Warning Test On" HorizontalAlignment="Right" Margin="0,26,199,0" VerticalAlignment="Top" Height="22" Width="136" FontSize="14" Click="WarningTestButton_Click"/>
+        <Button x:Name="ProtectionTestButton" Content="Protection Test On" HorizontalAlignment="Right" Margin="0,26,25,0" VerticalAlignment="Top" Height="22" Width="153" FontSize="14" Click="ProtectionTestButton_Click"/>
+        <Button x:Name="ResetDeviceButton" Content="Reset Device" HorizontalAlignment="Right" Margin="0,0,243,21" VerticalAlignment="Bottom" FontSize="14" Width="94" Click="ResetDeviceButton_Click" Height="22"/>
+        <Button x:Name="PreviewDisplayButton" Content="Display Preview" HorizontalAlignment="Right" Margin="0,0,25,51" VerticalAlignment="Bottom" FontSize="14" Width="153" Click="PreviewDisplayButton_Click" Height="22"/>
+        <ComboBox x:Name="ScreenOrientSelectBox" HorizontalAlignment="Right" Margin="0,88,198,0" VerticalAlignment="Top" Width="137" SelectedIndex="0" Height="28" FontSize="16">
+            <ListBoxItem Content="Left"/>
+            <ListBoxItem Content="Right"/>
+        </ComboBox>
+        <Label Content="Screen Orientation:" HorizontalAlignment="Right" Margin="0,63,198,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label Content="Shunt Resistance (mΩ):" HorizontalAlignment="Right" Margin="0,128,172,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="ShuntResistanceBox" HorizontalAlignment="Right" Margin="0,156,198,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="137" FontSize="14" Height="21" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Current Correction:" HorizontalAlignment="Right" Margin="0,187,199,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="CurrentCorrectionBox" HorizontalAlignment="Right" Margin="0,215,198,0" TextWrapping="Wrap" Text="0.95" VerticalAlignment="Top" Width="137" FontSize="14" Height="21" PreviewTextInput="tb_PreviewTextInput"/>
+        <ComboBox x:Name="FanControlTypeBox" HorizontalAlignment="Right" Margin="0,276,199,0" VerticalAlignment="Top" Width="136" SelectedIndex="0" Height="28" FontSize="16">
+            <ListBoxItem Content="Auto"/>
+            <ListBoxItem Content="Always Off"/>
+            <ListBoxItem Content="Always On"/>
+        </ComboBox>
+        <Label Content="Fan Control Type:" HorizontalAlignment="Right" Margin="0,251,209,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label Content="Fan On Temp (℃):" HorizontalAlignment="Right" Margin="0,251,41,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="FanOnTempBox" HorizontalAlignment="Right" Margin="0,280,47,0" TextWrapping="Wrap" Text="45" VerticalAlignment="Top" Width="124" FontSize="14" Height="20" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Alarm Temp (℃):" HorizontalAlignment="Right" Margin="0,322,215,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="WarningTempBox" HorizontalAlignment="Right" Margin="0,350,211,0" TextWrapping="Wrap" Text="90" VerticalAlignment="Top" Width="124" FontSize="14" Height="20" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Protect Temp (℃):" HorizontalAlignment="Right" Margin="0,322,41,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="ProtectTempBox" HorizontalAlignment="Right" Margin="0,350,47,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="124" FontSize="14" Height="20" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Alarm Current(A):" HorizontalAlignment="Right" Margin="0,391,210,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="WarningCurrentBox" HorizontalAlignment="Right" Margin="0,419,211,0" TextWrapping="Wrap" Text="12" VerticalAlignment="Top" Width="124" FontSize="14" Height="20" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Protect Curent(A):" HorizontalAlignment="Right" Margin="0,391,42,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="ProtectCurrentBox" HorizontalAlignment="Right" Margin="0,419,47,0" TextWrapping="Wrap" Text="15" VerticalAlignment="Top" Width="124" FontSize="14" Height="20" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Alarm Time Out(S):" HorizontalAlignment="Right" Margin="0,452,198,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="WarningTimeOutBox" HorizontalAlignment="Right" Margin="0,480,211,0" TextWrapping="Wrap" Text="120" VerticalAlignment="Top" Width="124" FontSize="14" Height="20" PreviewTextInput="tb_PreviewTextInput"/>
+        <Label Content="Total Power (Cable):" HorizontalAlignment="Left" Margin="14,83,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label x:Name="TotalPowerLabel" Content="0W" HorizontalAlignment="Left" Margin="14,111,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="144"/>
+        <Label Content="Cable Temp:" HorizontalAlignment="Left" Margin="176,83,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label x:Name="CableTempLabel" Content="0" HorizontalAlignment="Left" Margin="176,111,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="109"/>
+        <Label Content="Board Temp:" HorizontalAlignment="Left" Margin="302,83,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label x:Name="BoardTempLabel" Content="0" HorizontalAlignment="Left" Margin="302,111,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="124"/>
+
+    </Grid>
+</Window>

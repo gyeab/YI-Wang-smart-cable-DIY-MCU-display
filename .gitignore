@@ -1,0 +1,25 @@
+# Visual Studio / .NET
+.vs/
+*.user
+*.suo
+*.cache
+
+# Build outputs
+obj/
+bin/
+
+# Keep the publishable desktop build
+!bin/
+bin/*
+!bin/Debug/
+bin/Debug/*
+!bin/Debug/font-sync-test/
+!bin/Debug/font-sync-test/**
+
+# PlatformIO
+主控固件开发工程/.pio/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
