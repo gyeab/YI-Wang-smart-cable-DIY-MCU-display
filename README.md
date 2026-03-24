@@ -1,7 +1,8 @@
 # 翼王智能电线自定义MCU显示屏
 
 这是一个用于翼王智能电线项目的桌面端 + MCU 固件联动工程。
-
+效果图：
+https://github.com/gyeab/YI-Wang-smart-cable-DIY-MCU-display/issues/1#issue-4126710223
 项目包含两部分：
 
 1. Windows 桌面端 WPF 工具
